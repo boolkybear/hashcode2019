@@ -8,5 +8,15 @@
 
 import Foundation
 
-print("Hello, World!")
+if CommandLine.arguments.count < 3 {
+    print("main inputFile outputFile")
+    exit(-1)
+}
+
+guard let problem = SlideShowProblem(inputFile: CommandLine.arguments[1]) else {
+    print("Error on input file: \(CommandLine.arguments[1])")
+    exit(-1)
+}
+
+problem.solve(outputFile: CommandLine.arguments[2])
 

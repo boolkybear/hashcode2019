@@ -22,6 +22,18 @@ class DirectSolver: NSObject {
             .filter { $0.orientation == .horizontal }
             .forEach { result.add(slide: .horizontal($0)) }
 
+        var verticalPhotos = photos.filter { $0.orientation == .vertical }
+        if verticalPhotos.count & 1 != 0 {
+            verticalPhotos.removeLast()
+        }
+
+        let count = verticalPhotos.count / 2
+        for i in 0..<count {
+            let first = verticalPhotos[i*2]
+            let second = verticalPhotos[i*2+1]
+            result.add(slide: .vertical(first, second))
+        }
+
         return result
     }
 }

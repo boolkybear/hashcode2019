@@ -10,8 +10,10 @@ import Cocoa
 
 class SlideShowProblem: NSObject {
     let fotos: [Photo]
+    let search: Bool
 
-    init?(inputFile: String) {
+    init?(inputFile: String, search: Bool) {
+        self.search = search
         guard let inputString = try? String(contentsOfFile: inputFile) else {
             return nil
         }
@@ -29,7 +31,7 @@ class SlideShowProblem: NSObject {
     }
 
     func solve(outputFile: String) {
-        let solver = DirectSolver(photos: fotos)
+        let solver = SearchSolver(photos: fotos, search: search)
         let solution = solver.solve()
 
         do {

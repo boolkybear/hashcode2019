@@ -9,11 +9,11 @@
 import Foundation
 
 if CommandLine.arguments.count < 3 {
-    print("main inputFile outputFile")
+    print("main inputFile outputFile [search]")
     exit(-1)
 }
 
-guard let problem = SlideShowProblem(inputFile: CommandLine.arguments[1]) else {
+guard let problem = SlideShowProblem(inputFile: CommandLine.arguments[1], search: CommandLine.arguments.count == 4) else {
     print("Error on input file: \(CommandLine.arguments[1])")
     exit(-1)
 }

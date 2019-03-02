@@ -19,56 +19,44 @@ class SearchSetSolver {
 
     func solve() -> Slideshow {
         let result = Slideshow()
-        var slides: [Slide] = []
+        var slides: Set<Slide> = []
 
         let horizontalSlides: [Slide] = photos
             .filter { $0.orientation == .horizontal }
             .map { .horizontal($0) }
-        slides.append(contentsOf: horizontalSlides)
+        slides.formUnion(horizontalSlides) //.append(contentsOf: horizontalSlides)
 
-        var verticalPhotos = photos.filter { $0.orientation == .vertical }
+        var verticalPhotos = Set(photos).filter { $0.orientation == .vertical }
         if verticalPhotos.count & 1 != 0 {
-            verticalPhotos.removeLast()
+            _ = verticalPhotos.popFirst()
         }
-
-//        let count = verticalPhotos.count / 2
-//        for i in 0..<count {
-//            let first = verticalPhotos[i*2]
-//            let second = verticalPhotos[i*2+1]
-//            slides.append(.vertical(first, second))
-//        }
 
         var iterationv = 0
         let maxitv = verticalPhotos.count / 2
 
-        var fv = verticalPhotos.first
-        var restv = Array(verticalPhotos.dropFirst())
+        var fv = verticalPhotos.popFirst()
+//        var restv = Array(verticalPhotos.dropFirst())
         while fv != nil {
             print("Iteration Vert \(iterationv)/\(maxitv)")
             iterationv += 1
 
             let safefv = fv!
-            if restv.count > 0 {
-                if let secondv = restv.enumerated().first(where: { secondvv in
-                    safefv.tags.intersection(secondvv.element.tags).count == 0
+            if !verticalPhotos.isEmpty {
+                if let secondv = verticalPhotos.first(where: { secondvv in
+                    safefv.tags.isDisjoint(with: secondvv.tags)
                 }) {
-                    slides.append(.vertical(safefv, secondv.element))
-                    restv.remove(at: secondv.offset)
-                    fv = restv.first
-                    restv = Array(restv.dropFirst())
+                    slides.insert(.vertical(safefv, secondv))
+                    verticalPhotos.remove(secondv)
                 } else {
-                    slides.append(.vertical(safefv, restv.first!))
-                    restv.removeFirst()
-                    fv = restv.first
-                    restv = Array(restv.dropFirst())
+                    slides.insert(.vertical(safefv, verticalPhotos.popFirst()!))
                 }
+                fv = verticalPhotos.popFirst()
             } else {
                 fv = nil
             }
         }
 
-        var first = slides.first
-        var rest = Array(slides.dropFirst())
+        var first = slides.popFirst()
 
         var iteration = 0
         let maxIteration = slides.count
@@ -82,19 +70,18 @@ class SearchSetSolver {
                 print("Iteration \(iteration)/\(maxIteration)")
                 iteration += 1
                 let safeFirst = first!
-                if rest.count > 0 {
-                    if let next = rest.enumerated().first(where: { (index, second) in
+                if !slides.isEmpty {
+                    if let next = slides.first(where: { second in
                         return Slide.commonTags(slide1: safeFirst, slide2: second).count > 0 &&
                                 Slide.tagsNotInFirst(slide1: safeFirst, slide2: second).count > 0 &&
                                 Slide.tagsNotInSecond(slide1: safeFirst, slide2: second).count > 0
                     }) {
-                        result.add(slide: next.element)
-                        first = next.element
-                        rest.remove(at: next.offset)
+                        result.add(slide: next)
+                        first = next
+                        slides.remove(next)
                     } else {
-                        first = rest.first
+                        first = slides.popFirst()
                         result.add(slide: first!)
-                        rest.removeFirst()
                     }
                 } else {
                     first = nil
@@ -105,17 +92,16 @@ class SearchSetSolver {
                 print("Iteration \(iteration)/\(maxIteration)")
                 iteration += 1
                 let safeFirst = first!
-                if rest.count > 0 {
-                    if let next = rest.enumerated().first(where: { (index, second) in
+                if !slides.isEmpty {
+                    if let next = slides.first(where: { second in
                         return Slide.commonTags(slide1: safeFirst, slide2: second).count > 0
                     }) {
-                        result.add(slide: next.element)
-                        first = next.element
-                        rest.remove(at: next.offset)
+                        result.add(slide: next)
+                        first = next
+                        slides.remove(next)
                     } else {
-                        first = rest.first
+                        first = slides.popFirst()
                         result.add(slide: first!)
-                        rest.removeFirst()
                     }
                 } else {
                     first = nil

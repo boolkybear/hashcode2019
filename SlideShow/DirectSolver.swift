@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class DirectSolver: NSObject {
+class DirectSolver {
     var photos: [Photo]
 
     init(photos: [Photo]) {

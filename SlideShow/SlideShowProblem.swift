@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class SlideShowProblem: NSObject {
+class SlideShowProblem {
     let fotos: [Photo]
     let search: Bool
 
@@ -31,7 +31,7 @@ class SlideShowProblem: NSObject {
     }
 
     func solve(outputFile: String) {
-        let solver = SearchSolver(photos: fotos, search: search)
+        let solver = SearchSetSolver(photos: fotos, search: search)
         let solution = solver.solve()
 
         do {

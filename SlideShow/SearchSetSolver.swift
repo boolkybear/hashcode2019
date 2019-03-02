@@ -8,8 +8,8 @@
 
 import Cocoa
 
-class SearchSolver {
-    var photos: [Photo]
+class SearchSetSolver {
+    let photos: [Photo]
     let search: Bool
 
     init(photos: [Photo], search: Bool) {

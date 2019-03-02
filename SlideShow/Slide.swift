@@ -44,3 +44,15 @@ enum Slide {
         }
     }
 }
+
+extension Slide: Hashable {
+    var hashValue: Int {
+        return text.hashValue
+    }
+}
+
+extension Slide: Equatable {
+    static func == (lhs: Slide, rhs: Slide) -> Bool {
+        return lhs.text == rhs.text
+    }
+}

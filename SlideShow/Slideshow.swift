@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class Slideshow: NSObject {
+class Slideshow {
     var slides: [Slide] = []
 
     func add(slide: Slide) {

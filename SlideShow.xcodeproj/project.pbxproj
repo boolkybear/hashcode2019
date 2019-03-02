@@ -14,6 +14,7 @@
 		666DE7BD2228692600DF333B /* Slideshow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666DE7BC2228692600DF333B /* Slideshow.swift */; };
 		666DE7BF2228699D00DF333B /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666DE7BE2228699D00DF333B /* Slide.swift */; };
 		666DE7C12228737500DF333B /* SearchSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666DE7C02228737500DF333B /* SearchSolver.swift */; };
+		66CDB4D2222AF996007ACD4C /* SearchSetSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CDB4D1222AF996007ACD4C /* SearchSetSolver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,7 @@
 		666DE7BC2228692600DF333B /* Slideshow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slideshow.swift; sourceTree = "<group>"; };
 		666DE7BE2228699D00DF333B /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		666DE7C02228737500DF333B /* SearchSolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSolver.swift; sourceTree = "<group>"; };
+		66CDB4D1222AF996007ACD4C /* SearchSetSolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSetSolver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 		666DE7AE2228636500DF333B /* SlideShow */ = {
 			isa = PBXGroup;
 			children = (
+				66CDB4D1222AF996007ACD4C /* SearchSetSolver.swift */,
 				666DE7C02228737500DF333B /* SearchSolver.swift */,
 				666DE7AF2228636500DF333B /* main.swift */,
 				666DE7B6222863F300DF333B /* SlideShowProblem.swift */,
@@ -142,6 +145,7 @@
 				666DE7B02228636500DF333B /* main.swift in Sources */,
 				666DE7BF2228699D00DF333B /* Slide.swift in Sources */,
 				666DE7C12228737500DF333B /* SearchSolver.swift in Sources */,
+				66CDB4D2222AF996007ACD4C /* SearchSetSolver.swift in Sources */,
 				666DE7BD2228692600DF333B /* Slideshow.swift in Sources */,
 				666DE7BB222868AF00DF333B /* DirectSolver.swift in Sources */,
 			);

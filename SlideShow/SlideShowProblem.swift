@@ -10,10 +10,12 @@ import Cocoa
 
 class SlideShowProblem {
     let fotos: [Photo]
-    let search: Bool
+    let verticalStrategy: String
+    let slideStrategy: String
 
-    init?(inputFile: String, search: Bool) {
-        self.search = search
+    init?(inputFile: String, verticalStrategy: String, slideStrategy: String) {
+        self.verticalStrategy = verticalStrategy
+        self.slideStrategy = slideStrategy
         guard let inputString = try? String(contentsOfFile: inputFile) else {
             return nil
         }
@@ -31,7 +33,7 @@ class SlideShowProblem {
     }
 
     func solve(outputFile: String) {
-        let solver = SearchSetSolver(photos: fotos, search: search)
+        let solver = StrategySolver(photos: fotos, verticalStrategy: verticalStrategy, slideStrategy: slideStrategy)
         let solution = solver.solve()
 
         do {

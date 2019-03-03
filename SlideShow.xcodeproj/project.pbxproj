@@ -14,7 +14,14 @@
 		666DE7BD2228692600DF333B /* Slideshow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666DE7BC2228692600DF333B /* Slideshow.swift */; };
 		666DE7BF2228699D00DF333B /* Slide.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666DE7BE2228699D00DF333B /* Slide.swift */; };
 		666DE7C12228737500DF333B /* SearchSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666DE7C02228737500DF333B /* SearchSolver.swift */; };
+		66C946E9222C031100E0CA25 /* VerticalStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C946E8222C031100E0CA25 /* VerticalStrategy.swift */; };
+		66C946EB222C03B300E0CA25 /* DefaultVerticalStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C946EA222C03B300E0CA25 /* DefaultVerticalStrategy.swift */; };
+		66C946ED222C055600E0CA25 /* VerticalStrategyFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C946EC222C055600E0CA25 /* VerticalStrategyFactory.swift */; };
 		66CDB4D2222AF996007ACD4C /* SearchSetSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CDB4D1222AF996007ACD4C /* SearchSetSolver.swift */; };
+		66CDB4D4222B181C007ACD4C /* StrategySolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CDB4D3222B181C007ACD4C /* StrategySolver.swift */; };
+		66CDB4D6222B19E4007ACD4C /* SlideStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CDB4D5222B19E4007ACD4C /* SlideStrategy.swift */; };
+		66CDB4D8222B1AB2007ACD4C /* DefaultSlideStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CDB4D7222B1AB2007ACD4C /* DefaultSlideStrategy.swift */; };
+		66CDB4DA222B1BD0007ACD4C /* SlideStrategyFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66CDB4D9222B1BD0007ACD4C /* SlideStrategyFactory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -38,7 +45,14 @@
 		666DE7BC2228692600DF333B /* Slideshow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slideshow.swift; sourceTree = "<group>"; };
 		666DE7BE2228699D00DF333B /* Slide.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Slide.swift; sourceTree = "<group>"; };
 		666DE7C02228737500DF333B /* SearchSolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSolver.swift; sourceTree = "<group>"; };
+		66C946E8222C031100E0CA25 /* VerticalStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStrategy.swift; sourceTree = "<group>"; };
+		66C946EA222C03B300E0CA25 /* DefaultVerticalStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultVerticalStrategy.swift; sourceTree = "<group>"; };
+		66C946EC222C055600E0CA25 /* VerticalStrategyFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStrategyFactory.swift; sourceTree = "<group>"; };
 		66CDB4D1222AF996007ACD4C /* SearchSetSolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchSetSolver.swift; sourceTree = "<group>"; };
+		66CDB4D3222B181C007ACD4C /* StrategySolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StrategySolver.swift; sourceTree = "<group>"; };
+		66CDB4D5222B19E4007ACD4C /* SlideStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideStrategy.swift; sourceTree = "<group>"; };
+		66CDB4D7222B1AB2007ACD4C /* DefaultSlideStrategy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultSlideStrategy.swift; sourceTree = "<group>"; };
+		66CDB4D9222B1BD0007ACD4C /* SlideStrategyFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideStrategyFactory.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +85,7 @@
 		666DE7AE2228636500DF333B /* SlideShow */ = {
 			isa = PBXGroup;
 			children = (
+				66CDB4D3222B181C007ACD4C /* StrategySolver.swift */,
 				66CDB4D1222AF996007ACD4C /* SearchSetSolver.swift */,
 				666DE7C02228737500DF333B /* SearchSolver.swift */,
 				666DE7AF2228636500DF333B /* main.swift */,
@@ -79,6 +94,12 @@
 				666DE7BA222868AF00DF333B /* DirectSolver.swift */,
 				666DE7BC2228692600DF333B /* Slideshow.swift */,
 				666DE7BE2228699D00DF333B /* Slide.swift */,
+				66CDB4D5222B19E4007ACD4C /* SlideStrategy.swift */,
+				66CDB4D7222B1AB2007ACD4C /* DefaultSlideStrategy.swift */,
+				66CDB4D9222B1BD0007ACD4C /* SlideStrategyFactory.swift */,
+				66C946E8222C031100E0CA25 /* VerticalStrategy.swift */,
+				66C946EA222C03B300E0CA25 /* DefaultVerticalStrategy.swift */,
+				66C946EC222C055600E0CA25 /* VerticalStrategyFactory.swift */,
 			);
 			path = SlideShow;
 			sourceTree = "<group>";
@@ -140,13 +161,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66C946EB222C03B300E0CA25 /* DefaultVerticalStrategy.swift in Sources */,
 				666DE7B92228654700DF333B /* Photo.swift in Sources */,
 				666DE7B7222863F300DF333B /* SlideShowProblem.swift in Sources */,
+				66CDB4D6222B19E4007ACD4C /* SlideStrategy.swift in Sources */,
 				666DE7B02228636500DF333B /* main.swift in Sources */,
 				666DE7BF2228699D00DF333B /* Slide.swift in Sources */,
+				66CDB4DA222B1BD0007ACD4C /* SlideStrategyFactory.swift in Sources */,
 				666DE7C12228737500DF333B /* SearchSolver.swift in Sources */,
+				66C946ED222C055600E0CA25 /* VerticalStrategyFactory.swift in Sources */,
+				66C946E9222C031100E0CA25 /* VerticalStrategy.swift in Sources */,
 				66CDB4D2222AF996007ACD4C /* SearchSetSolver.swift in Sources */,
+				66CDB4D8222B1AB2007ACD4C /* DefaultSlideStrategy.swift in Sources */,
 				666DE7BD2228692600DF333B /* Slideshow.swift in Sources */,
+				66CDB4D4222B181C007ACD4C /* StrategySolver.swift in Sources */,
 				666DE7BB222868AF00DF333B /* DirectSolver.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

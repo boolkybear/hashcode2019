@@ -8,14 +8,14 @@
 
 import Foundation
 
-class MaxtagsVerticalStrategy {
-    static let name = "maxtags"
+class AverageVerticalStrategy {
+    static let name = "average"
 
     required init() {
     }
 }
 
-extension MaxtagsVerticalStrategy: VerticalStrategy {
+extension AverageVerticalStrategy: VerticalStrategy {
     func arrange(photos: Set<Photo>) -> Set<Slide> {
         var arranged: Set<Slide> = []
         var verticalPhotos = photos.filter { $0.orientation == .vertical }
@@ -24,9 +24,9 @@ extension MaxtagsVerticalStrategy: VerticalStrategy {
         var iterationv = 0
         let maxitv = verticalPhotos.count / 2
 
-        var fv = verticalPhotos.popFirst()
+        var fv = sortedVerticalPhotos.first
         while fv != nil {
-            print("Vertical \(MaxtagsVerticalStrategy.name): \(iterationv)/\(maxitv)")
+            print("Vertical \(AverageVerticalStrategy.name): \(iterationv)/\(maxitv)")
             iterationv += 1
 
             let safefv = fv!
@@ -34,14 +34,14 @@ extension MaxtagsVerticalStrategy: VerticalStrategy {
 
             let safetags = safefv.tags
             if !verticalPhotos.isEmpty {
-                if let maxtags = sortedVerticalPhotos.first(where: { safetags.isDisjoint(with: $0.tags) }) {
+                if let maxtags = sortedVerticalPhotos.last(where: { safefv != $0 && safetags.isDisjoint(with: $0.tags) }) {
                     // maximum total tags
                     arranged.insert(.vertical(safefv, maxtags))
                     verticalPhotos.remove(maxtags)
                     sortedVerticalPhotos.remove(at: sortedVerticalPhotos.firstIndex(of: maxtags)!)
                 } else {
                     // minimum common tags
-                    let sorted = verticalPhotos.sorted { photo1, photo2 in
+                    let sorted = sortedVerticalPhotos.sorted { photo1, photo2 in
                         let set1 = photo1.tags.intersection(safetags)
                         let set2 = photo2.tags.intersection(safetags)
 
@@ -54,7 +54,7 @@ extension MaxtagsVerticalStrategy: VerticalStrategy {
                     sortedVerticalPhotos.remove(at: sortedVerticalPhotos.firstIndex(of: mincommon)!)
                 }
 
-                fv = verticalPhotos.popFirst()
+                fv = sortedVerticalPhotos.first
             } else {
                 fv = nil
             }

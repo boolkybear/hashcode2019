@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66056D45222C6AE7004B7227 /* AverageVerticalStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66056D44222C6AE7004B7227 /* AverageVerticalStrategy.swift */; };
 		666DE7B02228636500DF333B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666DE7AF2228636500DF333B /* main.swift */; };
 		666DE7B7222863F300DF333B /* SlideShowProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666DE7B6222863F300DF333B /* SlideShowProblem.swift */; };
 		666DE7B92228654700DF333B /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666DE7B82228654700DF333B /* Photo.swift */; };
@@ -41,6 +42,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		66056D44222C6AE7004B7227 /* AverageVerticalStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageVerticalStrategy.swift; sourceTree = "<group>"; };
 		666DE7AC2228636500DF333B /* SlideShow */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SlideShow; sourceTree = BUILT_PRODUCTS_DIR; };
 		666DE7AF2228636500DF333B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		666DE7B6222863F300DF333B /* SlideShowProblem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideShowProblem.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				66C946EA222C03B300E0CA25 /* DefaultVerticalStrategy.swift */,
 				66C946EE222C13EA00E0CA25 /* DisjointVerticalStrategy.swift */,
 				66C946F4222C260200E0CA25 /* MaxtagsVerticalStrategy.swift */,
+				66056D44222C6AE7004B7227 /* AverageVerticalStrategy.swift */,
 				66C946EC222C055600E0CA25 /* VerticalStrategyFactory.swift */,
 			);
 			path = SlideShow;
@@ -189,6 +192,7 @@
 				66C946EF222C13EA00E0CA25 /* DisjointVerticalStrategy.swift in Sources */,
 				66CDB4D2222AF996007ACD4C /* SearchSetSolver.swift in Sources */,
 				66CDB4D8222B1AB2007ACD4C /* DefaultSlideStrategy.swift in Sources */,
+				66056D45222C6AE7004B7227 /* AverageVerticalStrategy.swift in Sources */,
 				666DE7BD2228692600DF333B /* Slideshow.swift in Sources */,
 				66CDB4D4222B181C007ACD4C /* StrategySolver.swift in Sources */,
 				666DE7BB222868AF00DF333B /* DirectSolver.swift in Sources */,

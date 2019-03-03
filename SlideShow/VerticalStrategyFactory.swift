@@ -10,6 +10,12 @@ import Foundation
 
 class VerticalStrategyFactory {
     static func strategy(withName name: String) -> VerticalStrategy {
-        return DefaultVerticalStrategy()
+        let classes: [VerticalStrategy.Type] = [DisjointVerticalStrategy.self]
+
+        guard let validClass = classes.first(where: { $0.name == name }) else {
+            return DefaultVerticalStrategy()
+        }
+
+        return validClass.init()
     }
 }

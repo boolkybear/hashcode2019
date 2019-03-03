@@ -17,6 +17,6 @@ class DefaultSlideStrategy {
 
 extension DefaultSlideStrategy: SlideStrategy {
     func solve(slides: Set<Slide>) -> [Slide] {
-        return Array(slides)
+        return Array(slides.filter { $0.tags.count > 1 })
     }
 }

@@ -10,7 +10,10 @@ import Foundation
 
 class SlideStrategyFactory {
     static func strategy(withName name: String) -> SlideStrategy {
-        let classes: [SlideStrategy.Type] = [SearchSlideStrategy.self, CommonSlideStrategy.self]
+        let classes: [SlideStrategy.Type] = [SearchSlideStrategy.self,
+                                             CommonSlideStrategy.self,
+                                             ExpandSlideStrategy.self,
+                                             BreadthSlideStrategy.self]
 
         guard let validClass = classes.first(where: { $0.name == name }) else {
             return DefaultSlideStrategy()

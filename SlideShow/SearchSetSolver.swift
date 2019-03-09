@@ -23,7 +23,7 @@ class SearchSetSolver {
 
         let horizontalSlides: [Slide] = photos
             .filter { $0.orientation == .horizontal }
-            .map { .horizontal($0) }
+            .map { .horizontal($0, []) }
         slides.formUnion(horizontalSlides) //.append(contentsOf: horizontalSlides)
 
         var verticalPhotos = Set(photos).filter { $0.orientation == .vertical }
@@ -45,10 +45,10 @@ class SearchSetSolver {
                 if let secondv = verticalPhotos.first(where: { secondvv in
                     safefv.tags.isDisjoint(with: secondvv.tags)
                 }) {
-                    slides.insert(.vertical(safefv, secondv))
+                    slides.insert(.vertical(safefv, secondv, []))
                     verticalPhotos.remove(secondv)
                 } else {
-                    slides.insert(.vertical(safefv, verticalPhotos.popFirst()!))
+                    slides.insert(.vertical(safefv, verticalPhotos.popFirst()!, []))
                 }
                 fv = verticalPhotos.popFirst()
             } else {

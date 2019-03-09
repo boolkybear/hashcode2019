@@ -36,7 +36,7 @@ extension AverageVerticalStrategy: VerticalStrategy {
             if !verticalPhotos.isEmpty {
                 if let maxtags = sortedVerticalPhotos.last(where: { safefv != $0 && safetags.isDisjoint(with: $0.tags) }) {
                     // maximum total tags
-                    arranged.insert(.vertical(safefv, maxtags))
+                    arranged.insert(.vertical(safefv, maxtags, []))
                     verticalPhotos.remove(maxtags)
                     sortedVerticalPhotos.remove(at: sortedVerticalPhotos.firstIndex(of: maxtags)!)
                 } else {
@@ -49,7 +49,7 @@ extension AverageVerticalStrategy: VerticalStrategy {
                     }
 
                     let mincommon = sorted.first!
-                    arranged.insert(.vertical(safefv, mincommon))
+                    arranged.insert(.vertical(safefv, mincommon, []))
                     verticalPhotos.remove(mincommon)
                     sortedVerticalPhotos.remove(at: sortedVerticalPhotos.firstIndex(of: mincommon)!)
                 }

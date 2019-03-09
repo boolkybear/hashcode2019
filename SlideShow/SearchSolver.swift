@@ -23,7 +23,7 @@ class SearchSolver {
 
         let horizontalSlides: [Slide] = photos
             .filter { $0.orientation == .horizontal }
-            .map { .horizontal($0) }
+            .map { .horizontal($0, []) }
         slides.append(contentsOf: horizontalSlides)
 
         var verticalPhotos = photos.filter { $0.orientation == .vertical }
@@ -52,12 +52,12 @@ class SearchSolver {
                 if let secondv = restv.enumerated().first(where: { secondvv in
                     safefv.tags.intersection(secondvv.element.tags).count == 0
                 }) {
-                    slides.append(.vertical(safefv, secondv.element))
+                    slides.append(.vertical(safefv, secondv.element, []))
                     restv.remove(at: secondv.offset)
                     fv = restv.first
                     restv = Array(restv.dropFirst())
                 } else {
-                    slides.append(.vertical(safefv, restv.first!))
+                    slides.append(.vertical(safefv, restv.first!, []))
                     restv.removeFirst()
                     fv = restv.first
                     restv = Array(restv.dropFirst())

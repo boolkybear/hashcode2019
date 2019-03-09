@@ -23,13 +23,31 @@ class StrategySolver {
         let result = Slideshow()
         var slides: Set<Slide> = []
 
+        var tagMapper: [String: Int] = [:]
+        var tagSet: Set<String> = []
+        photos.forEach {
+            tagSet.formUnion($0.tags)
+        }
+        let tags = Array(tagSet)
+        tags.enumerated().forEach {
+            tagMapper[$0.element] = $0.offset
+        }
+
         let horizontalSlides: [Slide] = photos
             .filter { $0.orientation == .horizontal }
-            .map { .horizontal($0) }
+            .map {
+                let intTags = $0.tags.map { tagMapper[$0]! }
+                return .horizontal($0, Set(intTags))
+            }
+
         slides.formUnion(horizontalSlides)
 
         let verticalSlides = VerticalStrategyFactory.strategy(withName: verticalStrategy).arrange(photos: Set(photos))
-        slides.formUnion(verticalSlides)
+        let taggedSlides: [Slide] = verticalSlides.map {
+            let intTags = $0.tags.map { tagMapper[$0]! }
+            return .vertical($0.photo1!, $0.photo2!, Set(intTags))
+        }
+        slides.formUnion(taggedSlides)
 
         let slideSolver = SlideStrategyFactory.strategy(withName: slideStrategy)
         result.slides = slideSolver.solve(slides: slides)

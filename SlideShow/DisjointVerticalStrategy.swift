@@ -33,10 +33,10 @@ extension DisjointVerticalStrategy: VerticalStrategy {
                 if let secondv = verticalPhotos.first(where: { secondvv in
                     safefv.tags.isDisjoint(with: secondvv.tags)
                 }) {
-                    arranged.insert(.vertical(safefv, secondv))
+                    arranged.insert(.vertical(safefv, secondv, []))
                     verticalPhotos.remove(secondv)
                 } else {
-                    arranged.insert(.vertical(safefv, verticalPhotos.popFirst()!))
+                    arranged.insert(.vertical(safefv, verticalPhotos.popFirst()!, []))
                 }
                 fv = verticalPhotos.popFirst()
             } else {

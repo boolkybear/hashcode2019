@@ -13,7 +13,8 @@ class SlideStrategyFactory {
         let classes: [SlideStrategy.Type] = [SearchSlideStrategy.self,
                                              CommonSlideStrategy.self,
                                              ExpandSlideStrategy.self,
-                                             BreadthSlideStrategy.self]
+                                             BreadthSlideStrategy.self,
+                                             TspSlideStrategy.self]
 
         guard let validClass = classes.first(where: { $0.name == name }) else {
             return DefaultSlideStrategy()

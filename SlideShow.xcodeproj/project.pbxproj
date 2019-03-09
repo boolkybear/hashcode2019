@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		66056D45222C6AE7004B7227 /* AverageVerticalStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66056D44222C6AE7004B7227 /* AverageVerticalStrategy.swift */; };
+		660C4D912232D52B00DB90FF /* TspSlideStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 660C4D902232D52A00DB90FF /* TspSlideStrategy.swift */; };
 		66302F81222F17DA00156C4A /* ExpandSlideStrategy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66302F80222F17DA00156C4A /* ExpandSlideStrategy.swift */; };
 		666DE7B02228636500DF333B /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666DE7AF2228636500DF333B /* main.swift */; };
 		666DE7B7222863F300DF333B /* SlideShowProblem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 666DE7B6222863F300DF333B /* SlideShowProblem.swift */; };
@@ -45,6 +46,7 @@
 
 /* Begin PBXFileReference section */
 		66056D44222C6AE7004B7227 /* AverageVerticalStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AverageVerticalStrategy.swift; sourceTree = "<group>"; };
+		660C4D902232D52A00DB90FF /* TspSlideStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TspSlideStrategy.swift; sourceTree = "<group>"; };
 		66302F80222F17DA00156C4A /* ExpandSlideStrategy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExpandSlideStrategy.swift; sourceTree = "<group>"; };
 		666DE7AC2228636500DF333B /* SlideShow */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = SlideShow; sourceTree = BUILT_PRODUCTS_DIR; };
 		666DE7AF2228636500DF333B /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
@@ -114,6 +116,7 @@
 				66C946F2222C226500E0CA25 /* CommonSlideStrategy.swift */,
 				66302F80222F17DA00156C4A /* ExpandSlideStrategy.swift */,
 				66D8DE122231C3F40058624F /* BreadthSlideStrategy.swift */,
+				660C4D902232D52A00DB90FF /* TspSlideStrategy.swift */,
 				66CDB4D9222B1BD0007ACD4C /* SlideStrategyFactory.swift */,
 				66C946E8222C031100E0CA25 /* VerticalStrategy.swift */,
 				66C946EA222C03B300E0CA25 /* DefaultVerticalStrategy.swift */,
@@ -183,6 +186,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				66C946EB222C03B300E0CA25 /* DefaultVerticalStrategy.swift in Sources */,
+				660C4D912232D52B00DB90FF /* TspSlideStrategy.swift in Sources */,
 				666DE7B92228654700DF333B /* Photo.swift in Sources */,
 				666DE7B7222863F300DF333B /* SlideShowProblem.swift in Sources */,
 				66CDB4D6222B19E4007ACD4C /* SlideStrategy.swift in Sources */,

@@ -31,18 +31,55 @@ extension TspSlideStrategy: SlideStrategy {
                     Slide.tagsNotInSecond(slide1: first, slide2: second).count)
     }
 
-    struct Node {
+    class Node {
         let startNode: Int
         let endNode: Int
         let value: Int
         let path: [Int]
+
+        init(startNode: Int, endNode: Int, value: Int, path: [Int]) {
+            self.startNode = startNode
+            self.endNode = endNode
+            self.value = value
+            self.path = path
+        }
+    }
+
+    func analyzeTags(slides: [Slide]) {
+        let analysisFilename = "tagInfo.txt"
+        var tagCounter: [String: Int] = [:]
+
+        slides.forEach {
+            $0.tags.forEach {
+                if let count = tagCounter[$0] {
+                    tagCounter[$0] = count + 1
+                } else {
+                    tagCounter[$0] = 1
+                }
+            }
+        }
+
+        let sortedTags = tagCounter.sorted { tag1, tag2 in
+            return tag1.value > tag2.value
+        }
+
+        let doubleCount = max(Double(slides.count), 1.0)
+        let tagStrings = sortedTags.map { "\($0.key): \($0.value) (\(Double($0.value)*100.0/doubleCount)%)" }
+        let joinedTags = tagStrings.joined(separator: "\n")
+
+        do {
+            try? joinedTags.write(toFile: analysisFilename, atomically: true, encoding: .utf8)
+        }
     }
 
     func solve(slides: Set<Slide>) -> [Slide] {
-        print("Solving \(TspSlideStrategy.name)")
         let validSlides = Array(slides.filter { $0.tags.count > 1 })
         let slideCount = validSlides.count
         let slideRange = 0..<slideCount
+
+        analyzeTags(slides: validSlides)
+
+        print("Solving \(TspSlideStrategy.name)")
 
         func calculateDistances() -> [[Int]] {
             let distanceFileName = "distanceMap.txt"
@@ -70,9 +107,9 @@ extension TspSlideStrategy: SlideStrategy {
                 $0.map { "\($0)" }.joined(separator: ",")
             }
             let singleString = valuesString.joined(separator: "\n")
-            do {
-                try? singleString.write(toFile: distanceFileName, atomically: true, encoding: .utf8)
-            }
+//            do {
+//                try? singleString.write(toFile: distanceFileName, atomically: true, encoding: .utf8)
+//            }
 
             return values
         }
@@ -89,7 +126,7 @@ extension TspSlideStrategy: SlideStrategy {
             return from.value + getValue(j: from.endNode, i: to.startNode) + to.value
         }
 
-        let maxNodes = 1100
+        let maxNodes = 1250
         var groups = slideCount / maxNodes
         if slideCount % maxNodes != 0 {
             groups += 1

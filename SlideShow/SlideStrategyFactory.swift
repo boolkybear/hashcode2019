@@ -12,6 +12,7 @@ class SlideStrategyFactory {
     static func strategy(withName name: String) -> SlideStrategy {
         let classes: [SlideStrategy.Type] = [SearchSlideStrategy.self,
                                              CommonSlideStrategy.self,
+                                             CommonMaxSlideStrategy.self,
                                              ExpandSlideStrategy.self,
                                              BreadthSlideStrategy.self,
                                              TspSlideStrategy.self]

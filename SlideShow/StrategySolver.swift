@@ -25,7 +25,7 @@ class StrategySolver {
 
         let horizontalSlides: [Slide] = photos
             .filter { $0.orientation == .horizontal }
-            .map { .horizontal($0) }
+            .map { Slide($0) }
         slides.formUnion(horizontalSlides)
 
         let verticalSlides = VerticalStrategyFactory.strategy(withName: verticalStrategy).arrange(photos: Set(photos))

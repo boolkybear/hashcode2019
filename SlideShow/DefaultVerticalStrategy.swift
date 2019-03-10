@@ -23,7 +23,7 @@ extension DefaultVerticalStrategy: VerticalStrategy {
         while verticalPhotos.count > 1 {
             if let first = verticalPhotos.popFirst(),
                 let second = verticalPhotos.popFirst() {
-                arranged.insert(.vertical(first, second))
+                arranged.insert(Slide(first, second))
             }
         }
 
